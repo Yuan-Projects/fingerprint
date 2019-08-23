@@ -1,6 +1,7 @@
 /**
  * Returns the central processing unit (CPU) class of the user's operating system.
  * http://help.dottoro.com/ljjsison.php
+ * Note: only works in IE.
  * @return {(string|undefined)} String that represents the class of the CPU. ['68K', 'Alpha', 'PPC', 'x86', 'Other']
  */
 function getCPUClass() {
@@ -14,11 +15,11 @@ function getCPUClass() {
  * 
  * @return {(number|undefined)} A Number indicating the number of logical processor cores.
  */
-function getHardwareConcurrency() {
+function getCPUCores() {
   return window.navigator.hardwareConcurrency;
 }
 
 export {
   getCPUClass,
-  getHardwareConcurrency
+  getCPUCores
 };
