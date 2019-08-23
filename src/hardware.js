@@ -19,7 +19,48 @@ function getCPUCores() {
   return window.navigator.hardwareConcurrency;
 }
 
+/**
+ * Returns the approximate amount of device memory in gigabytes.
+ * https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deviceMemory
+ *
+ * @return {(number|undefined)} A floating point number, or undefined if not supported.
+ */
+function getMemory() {
+  return window.navigator.deviceMemory;
+}
+
+/**
+ * Detects GPU vendor and renderer.
+ * https://gist.github.com/cvan/042b2448fcecefafbb6a91469484cdf8
+ *
+ * @return {Object} An object contains GPU render and renderer.
+ */
+function getGPU() {
+  var canvas = document.createElement('canvas');
+  var gl;
+  var debugInfo;
+  var vendor;
+  var renderer;
+  
+  try {
+    gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  } catch (e) {
+  }
+  
+  if (gl) {
+    debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+    renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+  }
+  return {
+    vendor,
+    renderer
+  };
+}
+
 export {
   getCPUClass,
-  getCPUCores
+  getCPUCores,
+  getGPU,
+  getMemory
 };
