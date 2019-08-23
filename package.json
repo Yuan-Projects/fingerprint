@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/Yuan-Projects/fingerprint#readme",
   "devDependencies": {
-    "rollup": "^1.20.1"
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "rollup": "^1.20.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }
