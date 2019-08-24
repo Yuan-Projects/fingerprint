@@ -23,6 +23,27 @@ var YuanFP = (function (exports) {
     return window.navigator.hardwareConcurrency;
   }
   /**
+   * Returns a list of available media input and output devices, such as microphones, cameras, headsets.
+   * https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices
+   *
+   * @return {Promise} A Promise object with a MediaDeviceInfo array describing the devices.
+   */
+
+
+  function getDevices() {
+    return new Promise(function (resolve, reject) {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+        reject("enumerateDevices() not supported.");
+      } else {
+        navigator.mediaDevices.enumerateDevices().then(function (devices) {
+          resolve(devices);
+        }, function (err) {
+          reject(err);
+        });
+      }
+    });
+  }
+  /**
    * Returns the approximate amount of device memory in gigabytes.
    * https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deviceMemory
    *
@@ -134,6 +155,7 @@ var YuanFP = (function (exports) {
   exports.getBattery = getBattery;
   exports.getCPUClass = getCPUClass;
   exports.getCPUCores = getCPUCores;
+  exports.getDevices = getDevices;
   exports.getGPU = getGPU;
   exports.getMemory = getMemory;
 
