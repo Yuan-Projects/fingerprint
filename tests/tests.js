@@ -50,3 +50,8 @@ QUnit.test("Platform", function(assert) {
   assert.ok(platform.name, "Able to get the platform of the browser: " + platform.name);
   assert.ok(platform.version, "Able to get the platform version: " + platform.version);
 });
+
+QUnit.test("Timezone", function(assert) {
+  assert.ok(YuanFP.getTimezone(), "Able to get timezone");
+  assert.equal(typeof YuanFP.getTimezoneOffset(), "number", "Able to get timezone offset");
+});

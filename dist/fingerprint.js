@@ -169,6 +169,27 @@ var YuanFP = (function (exports) {
 
     return platform;
   }
+  /**
+   * Returns a timezone string.
+   *
+   * @return {string} A string.
+   */
+
+
+  function getTimezone() {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone;
+  }
+  /**
+   * Returns the time zone difference, in minutes, from current locale (host system settings) to UTC.
+   *
+   * @return {number} A number representing the time-zone offset, in minutes, from the date based on current host system settings to UTC.
+   */
+
+
+  function getTimezoneOffset() {
+    var now = new Date();
+    return now.getTimezoneOffset();
+  }
 
   exports.getBattery = getBattery;
   exports.getCPUClass = getCPUClass;
@@ -177,6 +198,8 @@ var YuanFP = (function (exports) {
   exports.getGPU = getGPU;
   exports.getMemory = getMemory;
   exports.getPlatform = getPlatform;
+  exports.getTimezone = getTimezone;
+  exports.getTimezoneOffset = getTimezoneOffset;
 
   return exports;
 
