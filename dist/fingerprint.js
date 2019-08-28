@@ -152,12 +152,31 @@ var YuanFP = (function (exports) {
     return Battery;
   }
 
+  /**
+   * Returns Operating system name and version.
+   *
+   * @return {Object}
+   */
+  function getPlatform() {
+    var platform = {
+      name: '',
+      version: ''
+    };
+
+    if (navigator.platform) {
+      platform.name = navigator.platform;
+    }
+
+    return platform;
+  }
+
   exports.getBattery = getBattery;
   exports.getCPUClass = getCPUClass;
   exports.getCPUCores = getCPUCores;
   exports.getDevices = getDevices;
   exports.getGPU = getGPU;
   exports.getMemory = getMemory;
+  exports.getPlatform = getPlatform;
 
   return exports;
 

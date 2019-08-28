@@ -42,3 +42,11 @@ QUnit.test("Devices", function(assert) {
     done();
   });
 });
+
+QUnit.module("OperatingSystem");
+
+QUnit.test("Platform", function(assert) {
+  var platform = YuanFP.getPlatform();
+  assert.ok(platform.name, "Able to get the platform of the browser: " + platform.name);
+  assert.ok(platform.version, "Able to get the platform version: " + platform.version);
+});
